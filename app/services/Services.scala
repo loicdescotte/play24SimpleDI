@@ -26,8 +26,3 @@ class LinkService(logService: LogService){
     }
   }
 }
-
-trait ServicesComponent{
-  val logService = new LogService
-  val linkService = new LinkService(logService)
-}

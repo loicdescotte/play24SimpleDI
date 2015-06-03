@@ -1,9 +1,7 @@
 import play.api._
 import play.api.ApplicationLoader.Context
-import services.ServicesComponent
+import services._
 import router.Routes
-
-object ApplicationServices extends ServicesComponent
 
 class SimpleApplicationLoader extends ApplicationLoader {
   def load(context: Context) = {
@@ -12,7 +10,9 @@ class SimpleApplicationLoader extends ApplicationLoader {
 }
 
 class ApplicationComponents(context: Context) extends BuiltInComponentsFromContext(context) {
-  lazy val applicationController = new controllers.Application(ApplicationServices)
+  lazy val logService = new LogService
+  lazy val linkService = new LinkService(logService)
+  lazy val applicationController = new controllers.Application(linkService)
   lazy val assets = new controllers.Assets(httpErrorHandler)
   lazy val router = new Routes(httpErrorHandler, applicationController, assets)
 }
