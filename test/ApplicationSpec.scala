@@ -8,14 +8,9 @@ import play.api.test.Helpers._
 @RunWith(classOf[JUnitRunner])
 class ApplicationSpec extends Specification {
 
-  /*
   "Application" should {
 
-    "send 404 on a bad request" in new WithApplication{
-      route(FakeRequest(GET, "/boum")) must beNone
-    }
-
-    "render the index page" in new WithApplication{
+    "render the index page" in new WithDepsApplication{
       val home = route(FakeRequest(GET, "/?query=hello")).get
 
       status(home) must equalTo(OK)
@@ -23,7 +18,5 @@ class ApplicationSpec extends Specification {
       contentAsString(home) must contain ("Results :")
     }
   }
-  */
-
-  //Helpers.route do not seem to use the custom router
+  
 }
