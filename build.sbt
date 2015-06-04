@@ -11,7 +11,9 @@ resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
 libraryDependencies ++= Seq(
   ws,
   specs2 % Test,
-  "org.mockito" % "mockito-core" % "1.9.5" % Test
+  "org.mockito" % "mockito-core" % "1.9.5" % Test,
+  "com.softwaremill.macwire" %% "macros" % "1.0.1",
+  "com.softwaremill.macwire" %% "runtime" % "1.0.1"
 )
 
 routesGenerator := InjectedRoutesGenerator

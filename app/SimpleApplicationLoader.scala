@@ -9,10 +9,13 @@ class SimpleApplicationLoader extends ApplicationLoader {
   }
 }
 
-class ApplicationComponents(context: Context) extends BuiltInComponentsFromContext(context) {
+object ControllerDependencies {
   lazy val logService = new LogService
   lazy val linkService = new LinkService(logService)
-  lazy val applicationController = new controllers.Application(linkService)
+}
+
+class ApplicationComponents(context: Context) extends BuiltInComponentsFromContext(context) {  
+  lazy val applicationController = new controllers.Application(ControllerDependencies.linkService)
   lazy val assets = new controllers.Assets(httpErrorHandler)
   lazy val router = new Routes(httpErrorHandler, applicationController, assets)
 }
