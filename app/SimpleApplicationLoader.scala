@@ -17,5 +17,5 @@ object ControllerDependencies {
 class ApplicationComponents(context: Context) extends BuiltInComponentsFromContext(context) {  
   lazy val applicationController = new controllers.Application(ControllerDependencies.linkService)
   lazy val assets = new controllers.Assets(httpErrorHandler)
-  lazy val router = new Routes(httpErrorHandler, applicationController, assets)
+  override lazy val router = new Routes(httpErrorHandler, applicationController, assets)
 }
